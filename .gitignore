@@ -1,0 +1,23 @@
+# Python virtual environment and cache files
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Terraform runtime files 
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfstate.lock.info
+.terraform.lock.hcl
+*.devoverride.hcl
+
+# LocalStack and Docker container artifacts
+.localstack/
+*.log
+
+# Operating System specific files
+.DS_Store
+Thumbs.db
