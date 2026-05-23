@@ -12,7 +12,7 @@ provider "aws" {
   region = var.aws_region
 }
 
-# Call our custom network module
+# Call the custom network module
 module "network" {
   source       = "./modules/network"
   aws_region   = var.aws_region

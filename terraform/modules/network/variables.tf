@@ -5,7 +5,7 @@ variable "owner" { type = string }
 
 variable "vpc_cidr" {
   type    = string
-  default = "10.20.0.0/16" # The exact network scale requested by the brief [cite: 26]
+  default = "10.20.0.0/16" # The exact network scale in the pdf
 }
 
 variable "public_subnet_1_cidr" {

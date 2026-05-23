@@ -2,7 +2,7 @@ import boto3
 import json
 
 def get_localstack_ec2_client():
-    # We configure boto3 to talk directly to our local container port instead of real AWS!
+    # Configuring boto3 to talk directly to our local container port instead of real AWS!
     return boto3.client(
         'ec2',
         region_name='us-east-1',
@@ -15,7 +15,7 @@ def audit_ebs_volumes():
     ec2 = get_localstack_ec2_client()
     print("🔍 Scanning local cloud environment for orphaned storage volumes...")
     
-    # Fetch all EBS volumes in the system
+    # Fetching all EBS volumes in the system
     response = ec2.describe_volumes()
     volumes = response.get('Volumes', [])
     
@@ -27,14 +27,14 @@ def audit_ebs_volumes():
         state = volume['State']
         attachments = volume.get('Attachments', [])
         
-        # Look for the required "ManagedBy" tracking tag
+        # Looking for required "ManagedBy" tracking tag
         tags = volume.get('Tags', [])
         managed_by = "Unknown"
         for tag in tags:
             if tag['Key'] == 'ManagedBy':
                 managed_by = tag['Value']
         
-        # Condition: If there are ZERO attachments, it's an orphaned resource!
+        # Condition: If there are ZERO attachments, it's an orphaned resource
         if len(attachments) == 0:
             orphaned_count += 1
             print(f"\n⚠️  ALERT: Found Unattached (Orphaned) EBS Volume!")

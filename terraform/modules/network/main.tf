@@ -1,4 +1,4 @@
-# This creates the main private network boundary
+# Creates the main private network boundary
 resource "aws_vpc" "main" {
   cidr_block           = var.vpc_cidr
   enable_dns_hostnames = true
@@ -12,7 +12,7 @@ resource "aws_vpc" "main" {
   }
 }
 
-# This creates Public Subnet 1 in Availability Zone A
+# Creates Public Subnet 1 in Availability Zone A
 resource "aws_subnet" "public_1" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = var.public_subnet_1_cidr
@@ -28,7 +28,7 @@ resource "aws_subnet" "public_1" {
   }
 }
 
-# This creates Public Subnet 2 in Availability Zone B
+# Creates Public Subnet 2 in Availability Zone B
 resource "aws_subnet" "public_2" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = var.public_subnet_2_cidr
