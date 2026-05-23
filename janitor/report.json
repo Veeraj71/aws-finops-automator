@@ -1,0 +1,27 @@
+{
+  "scan_timestamp": "2026-05-23T21:10:43Z",
+  "account_id": "000000000000",
+  "region": "us-east-1",
+  "summary": {
+    "ebs_volumes_total": 3,
+    "orphaned_ebs_volumes": 1
+  },
+  "total_orphans": 1,
+  "estimated_monthly_waste_usd": 0.8,
+  "findings": [
+    {
+      "resource_id": "vol-1b4a55d3eaeb5c50e",
+      "resource_type": "ebs_volume",
+      "reason": "unattached",
+      "age_days": 1,
+      "estimated_monthly_cost_usd": 0.8,
+      "tags": {
+        "Project": "NimbusKart",
+        "Environment": "staging",
+        "Owner": "DevOpsTeam"
+      },
+      "suggested_action": "delete",
+      "safe_to_auto_delete": true
+    }
+  ]
+}
