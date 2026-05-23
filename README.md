@@ -37,6 +37,24 @@ The project baseline requirement called for exposing Port 22 (SSH) globally to `
 * Terraform binary installed on the system path
 
 ### 1. Initialize the Mock Cloud Environment
-Spin up a localized AWS API simulation via Docker using LocalStack:
+1. Ensure your terminal is at the project root folder and activate the Python virtual environment:
 ```bash
-sudo docker run --rm -d -p 4566:4566 --name localstack localstack/localstack:4.4.0
+source .venv/bin/activate
+```
+### 2. Launch LocalStack (Free Tier v4.4.0)
+Run the clean, open-source version of LocalStack inside Docker in the foreground. Wait until the terminal logs explicitly display Ready.:
+```Bash
+sudo docker run --rm -p 4566:4566 --name localstack localstack/localstack:4.4.0
+```
+### 3. Deploy the Mock Infrastructure
+Open a second terminal window (ensure .venv is activated), navigate to the terraform/ directory, and apply the infrastructure code:
+```Bash
+cd terraform
+tflocal apply -auto-approve
+```
+### 4. Run the Cost Janitor Automation Script
+Navigate back to the project root directory and execute the automation script to discover orphans and generate report.json:
+```Bash
+cd ..
+python janitor/janitor.py
+```
